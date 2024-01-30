@@ -1,4 +1,4 @@
-name: Entrenamiento del modelo
+name: Entrenamiento del Modelo
 
 on: [push]
 
