@@ -10,15 +10,14 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Cambiar al directorio Damages_Model
-      run: cd Damages_Model
-
     #- name: Matar el script evaluate_model.py
     #  run: pkill -f evaluate_model.py || true
 
     - name: Ejecutar el programa model_training.py
       run: python model_training.py
+      working-directory: Damages_Model
 
     - name: Ejecutar el programa evaluate_model.py
       run: python evaluate_model.py
+      working-directory: Damages_Model
 
