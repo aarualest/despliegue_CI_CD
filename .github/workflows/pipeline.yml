@@ -1,4 +1,4 @@
-name: Entrenamiento del Modelo
+name: Automatización del Modelo
 
 on: [push]
 
