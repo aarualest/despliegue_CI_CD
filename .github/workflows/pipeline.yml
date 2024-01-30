@@ -8,7 +8,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Comprobar si evaluate_model.py se está ejecutando
       run: |
@@ -32,7 +32,7 @@ jobs:
     
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Iniciar el programa evaluate_model.py en segundo plano
       run: |
