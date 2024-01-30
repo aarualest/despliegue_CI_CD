@@ -26,10 +26,9 @@ jobs:
       shell: cmd
       working-directory: Damages_Model
 
-    - name: Reiniciar el programa evaluate_model.py en segundo plano
-      run: |
-        PowerShell -ExecutionPolicy Bypass -Command "& {Start-Process python -ArgumentList 'evaluate_model.py' -WorkingDirectory 'Damages_Model' -NoNewWindow}"
-      shell: cmd
+    - name: Iniciar el programa evaluate_model.py en segundo plano
+      run: Start-Process python -ArgumentList "evaluate_model.py" -WorkingDirectory "${{ github.workspace }}\Damages_Model" -NoNewWindow
+      shell: powershell
       working-directory: Damages_Model
   
   evaluacion:
