@@ -1,9 +1,0 @@
-﻿{
-  "agentId": 21,
-  "agentName": "ANDERSON-RUALES",
-  "poolId": 1,
-  "poolName": "Default",
-  "serverUrl": "https://pipelinesghubeus11.actions.githubusercontent.com/pE6VUJfuw6i8qXB9VW3lvYmCWFnRN3LPSrxclA6SAL35DGJMke/",
-  "gitHubUrl": "https://github.com/aarualest/despliegue_CI_CD",
-  "workFolder": "_work"
-}
