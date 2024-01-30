@@ -1,0 +1,24 @@
+name: Evaluación del Modelo
+
+on: 
+    push:
+        branches: [ "main" ]
+
+jobs:
+  evaluacion:
+    runs-on: self-hosted
+    steps:
+        - uses: actions/checkout@v3
+        - name: Set up Python 3.8.10
+          uses: actions/setup-python@v3
+          with:
+            python-version: 3.11.0
+    #runs-on: ubuntu-latest
+
+    #steps:
+    #- name: Checkout
+    #  uses: actions/checkout@v2
+
+        - name: Iniciar el programa evaluate_model.py en segundo plano
+          run: nohup python evaluate_model.py > /dev/null 2>&1 &
+          working-directory: Damages_Model

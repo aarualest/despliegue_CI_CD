@@ -1,0 +1,32 @@
+name: Entrenamiento del modelo
+
+on: [push]
+
+jobs:
+  entrenamiento:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Comprobar si evaluate_model.py se está ejecutando
+      run: |
+        if pgrep -f evaluate_model.py; then
+          echo "El proceso evaluate_model.py aún se está ejecutando."
+        else
+          echo "El proceso evaluate_model.py ha sido terminado."
+        fi    
+
+    - name: Matar el script evaluate_model.py
+      run: pkill -f evaluate_model.py || true
+      working-directory: Damages_Model
+
+    - name: Ejecutar el programa model_training.py
+      run: python model_training.py
+      working-directory: Damages_Model
+
+    - name: Reiniciar el programa evaluate_model.py en segundo plano
+      run: nohup python evaluate_model.py > /dev/null 2>&1 &
+      working-directory: Damages_Model
+
