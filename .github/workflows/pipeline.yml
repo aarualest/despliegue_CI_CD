@@ -25,11 +25,6 @@ jobs:
       run: python model_training.py
       shell: cmd
       working-directory: Damages_Model
-
-    - name: Iniciar el programa evaluate_model.py en segundo plano
-      run: Start-Process python -ArgumentList "evaluate_model.py" -WorkingDirectory "${{ github.workspace }}\Damages_Model" -NoNewWindow
-      shell: powershell
-      working-directory: Damages_Model
   
   evaluacion:
     needs: entrenamiento
@@ -43,3 +38,4 @@ jobs:
       run: |
           PowerShell -ExecutionPolicy Bypass -Command "& {Start-Process python -ArgumentList 'evaluate_model.py' -WorkingDirectory 'Damages_Model' -NoNewWindow}"
       shell: cmd
+      working-directory: Damages_Model
