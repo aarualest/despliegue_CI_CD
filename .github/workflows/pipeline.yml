@@ -31,5 +31,16 @@ jobs:
         PowerShell -ExecutionPolicy Bypass -Command "& {Start-Process python -ArgumentList 'evaluate_model.py' -WorkingDirectory 'Damages_Model' -NoNewWindow}"
       shell: cmd
       working-directory: Damages_Model
+  
+  evaluacion:
+    needs: entrenamiento
+    runs-on: self-hosted
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
 
-
+    - name: Iniciar el programa evaluate_model.py en segundo plano
+      run: |
+          PowerShell -ExecutionPolicy Bypass -Command "& {Start-Process python -ArgumentList 'evaluate_model.py' -WorkingDirectory 'Damages_Model' -NoNewWindow}"
+      shell: cmd
