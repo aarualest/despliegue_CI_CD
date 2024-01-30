@@ -1,0 +1,12 @@
+﻿{
+  "repositoryName": "aarualest/despliegue_CI_CD",
+  "pipelineDirectory": "despliegue_CI_CD",
+  "workspaceDirectory": "despliegue_CI_CD\\despliegue_CI_CD",
+  "repositories": {
+    "aarualest/despliegue_CI_CD": {
+      "repositoryPath": "despliegue_CI_CD\\despliegue_CI_CD",
+      "lastRunOn": "01/29/2024 22:39:12 -05:00"
+    }
+  },
+  "lastRunOn": "01/29/2024 22:39:12 -05:00"
+}
