@@ -9,11 +9,7 @@ jobs:
     runs-on: self-hosted
     steps:
         - name: Checkout
-          uses: actions/checkout@v3
-
-    #steps:
-    #
-    #  uses: actions/checkout@v2
+          uses: actions/checkout@v2
 
         - name: Iniciar el programa evaluate_model.py en segundo plano
           run: nohup python evaluate_model.py > /dev/null 2>&1 &
