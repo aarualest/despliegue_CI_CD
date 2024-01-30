@@ -18,16 +18,18 @@ jobs:
     - name: Matar el script evaluate_model.py
       run: |
         taskkill /F /IM python.exe /FI "WINDOWTITLE eq evaluate_model.py" || echo "No se pudo encontrar el proceso evaluate_model.py para terminar."
+      shell: cmd
       working-directory: Damages_Model
 
     - name: Ejecutar el programa model_training.py
       run: python model_training.py
+      shell: cmd
       working-directory: Damages_Model
 
     - name: Reiniciar el programa evaluate_model.py en segundo plano
       run: |
-        Start-Process python -ArgumentList "evaluate_model.py" -WorkingDirectory "Damages_Model" -WindowStyle Hidden
-      shell: powershell
+        PowerShell -ExecutionPolicy Bypass -Command "& {Start-Process python -ArgumentList 'evaluate_model.py' -WorkingDirectory 'Damages_Model' -NoNewWindow}"
+      shell: cmd
       working-directory: Damages_Model
 
 
