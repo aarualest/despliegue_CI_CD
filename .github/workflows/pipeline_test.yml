@@ -13,6 +13,5 @@ jobs:
 
       - name: Iniciar el programa evaluate_model.py en segundo plano
         run: |
-          Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
-          Start-Process python -ArgumentList "evaluate_model.py" -WorkingDirectory "${{ github.workspace }}/Damages_Model" -NoNewWindow
-        shell: powershell
+            PowerShell -ExecutionPolicy Bypass -Command "& {Start-Process python -ArgumentList 'evaluate_model.py' -WorkingDirectory 'Damages_Model' -NoNewWindow}"
+        shell: cmd
