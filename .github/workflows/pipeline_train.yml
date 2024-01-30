@@ -12,14 +12,11 @@ jobs:
 
     - name: Comprobar si evaluate_model.py se está ejecutando
       run: |
-        if pgrep -f evaluate_model.py; then
-          echo "El proceso evaluate_model.py aún se está ejecutando."
-        else
-          echo "El proceso evaluate_model.py ha sido terminado."
-        fi    
+        tasklist /FI "IMAGENAME eq python.exe" 2>NUL | find /I "evaluate_model.py" && echo "El proceso evaluate_model.py aún se está ejecutando." || echo "El proceso evaluate_model.py ha sido terminado."
 
     - name: Matar el script evaluate_model.py
-      run: pkill -f evaluate_model.py || true
+      run: |
+        taskkill /F /IM python.exe /FI "WINDOWTITLE eq evaluate_model.py" || echo "No se pudo encontrar el proceso evaluate_model.py para terminar."
       working-directory: Damages_Model
 
     - name: Ejecutar el programa model_training.py
@@ -27,6 +24,9 @@ jobs:
       working-directory: Damages_Model
 
     - name: Reiniciar el programa evaluate_model.py en segundo plano
-      run: nohup python evaluate_model.py > /dev/null 2>&1 &
+      run: |
+        Start-Process python -ArgumentList "evaluate_model.py" -WorkingDirectory "Damages_Model" -WindowStyle Hidden
+      shell: powershell
       working-directory: Damages_Model
+
 

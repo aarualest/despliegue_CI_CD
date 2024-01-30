@@ -1,16 +1,16 @@
 name: Evaluación del Modelo
 
 on: 
-    push:
-        branches: [ "main" ]
+  push:
+    branches: [ "main" ]
 
 jobs:
   evaluacion:
     runs-on: self-hosted
     steps:
-        - name: Checkout
-          uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
-        - name: Iniciar el programa evaluate_model.py en segundo plano
-          run: nohup python evaluate_model.py > /dev/null 2>&1 &
-          working-directory: Damages_Model
+      - name: Iniciar el programa evaluate_model.py en segundo plano
+        run: Start-Process python -ArgumentList "evaluate_model.py" -WorkingDirectory "${{ github.workspace }}/Damages_Model" -NoNewWindow
+        shell: powershell
