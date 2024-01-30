@@ -35,5 +35,6 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Iniciar el programa evaluate_model.py en segundo plano
-      run: Start-Process python -ArgumentList "evaluate_model.py" -WorkingDirectory "${{ github.workspace }}\Damages_Model" -NoNewWindow
-      shell: powershell
+      run: |
+        powershell -Command "& {Start-Process python -ArgumentList 'evaluate_model.py' -WorkingDirectory 'Damages_Model' -NoNewWindow}"
+      shell: cmd
